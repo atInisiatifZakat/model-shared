@@ -5,33 +5,22 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared;
 
 use Illuminate\Routing\Router;
+use Inisiatif\ModelShared\Concern\JobMigration;
+use Inisiatif\ModelShared\Concern\DegreeMigration;
 
 final class ModelShared
 {
-    public static bool $runningJobMigration = true;
+    use JobMigration;
 
-    public static function runningJobMigration(bool $run = true): void
-    {
-        self::$runningJobMigration = $run;
-    }
-
-    public static function ignoreJobMigrations(): void
-    {
-        self::runningJobMigration(false);
-    }
-
-    public static function isRunningJobMigrations(): bool
-    {
-        return self::$runningJobMigration;
-    }
-
-    public static function isIgnoreJobMigrations(): bool
-    {
-        return self::$runningJobMigration;
-    }
+    use DegreeMigration;
 
     public static function jobRoute(Router $router): void
     {
         Routes::job($router);
+    }
+
+    public static function degreeRoute(Router $router): void
+    {
+        Routes::degree($router);
     }
 }
