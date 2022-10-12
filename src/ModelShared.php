@@ -8,6 +8,7 @@ use Illuminate\Routing\Router;
 use Inisiatif\ModelShared\Concern\JobMigration;
 use Inisiatif\ModelShared\Concern\DegreeMigration;
 use Inisiatif\ModelShared\Concern\RegionMigration;
+use Inisiatif\ModelShared\Concern\MaritalStatusMigration;
 
 final class ModelShared
 {
@@ -16,6 +17,8 @@ final class ModelShared
     use DegreeMigration;
 
     use RegionMigration;
+
+    use MaritalStatusMigration;
 
     public static function jobRoute(Router $router): void
     {
@@ -30,5 +33,10 @@ final class ModelShared
     public static function regionRoute(Router $router): void
     {
         Routes::region($router);
+    }
+
+    public static function maritalStatusRoute(Router $router): void
+    {
+        Routes::maritalStatus($router);
     }
 }

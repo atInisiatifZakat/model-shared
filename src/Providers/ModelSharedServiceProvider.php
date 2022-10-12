@@ -30,5 +30,9 @@ final class ModelSharedServiceProvider extends ServiceProvider
                 __DIR__ . '/../../database/migrations/2022_09_01_000000_create_countries_table.php',
             ]);
         }
+
+        if (ModelShared::isRunningMaritalStatusMigrations()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations/2022_09_06_033913_create_marital_statuses_table.php');
+        }
     }
 }

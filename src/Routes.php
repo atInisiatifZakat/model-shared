@@ -7,6 +7,7 @@ namespace Inisiatif\ModelShared;
 use Illuminate\Routing\Router;
 use Inisiatif\ModelShared\Http\Controllers\Job\ShowJobController;
 use Inisiatif\ModelShared\Http\Controllers\Job\FilterJobController;
+use Inisiatif\ModelShared\Http\Controllers\MaritalStatusController;
 use Inisiatif\ModelShared\Http\Controllers\Degree\ShowDegreeController;
 use Inisiatif\ModelShared\Http\Controllers\Region\FilterCityController;
 use Inisiatif\ModelShared\Http\Controllers\Degree\FilterDegreeController;
@@ -36,5 +37,14 @@ final class Routes
         $router->get('/cities', FilterCityController::class);
         $router->get('/districts', FilterDistrictController::class);
         $router->get('/villages', FilterVillageController::class);
+    }
+
+    public static function maritalStatus(Router $router): void
+    {
+        $router->controller(MaritalStatusController::class)
+            ->group(static function (Router $router): void {
+                $router->get('/marital-status', 'index');
+                $router->post('/marital-status', 'create');
+            });
     }
 }
