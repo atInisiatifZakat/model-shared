@@ -10,7 +10,7 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create(\config('shared.tables.job'), static function (Blueprint $table): void {
+        Schema::create('jobs', static function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->boolean('is_active')->default(true);
