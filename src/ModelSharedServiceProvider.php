@@ -7,6 +7,7 @@ namespace Inisiatif\ModelShared;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
@@ -77,9 +78,24 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             $this->loadMigrationsFrom([
                 __DIR__.'/../database/migrations/000_create_countries_table.php',
                 __DIR__.'/../database/migrations/001_create_provinces_table.php',
-                __DIR__ . '/../database/migrations/002_create_cities_table.php',
+                __DIR__.'/../database/migrations/002_create_cities_table.php',
                 __DIR__.'/../database/migrations/003_create_districts_table.php',
-                __DIR__ . '/../database/migrations/004_create_villages_table.php',
+                __DIR__.'/../database/migrations/004_create_villages_table.php',
+            ]);
+        }
+    }
+
+    protected function registerDonorModelRegistrar(): void
+    {
+        $registrar = DonorModelRegistrar::make(
+            \config('shared.donor')
+        );
+
+        $this->app->singleton(DonorModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/005_create_donors_table.php',
             ]);
         }
     }

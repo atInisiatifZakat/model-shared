@@ -7,6 +7,8 @@ namespace Inisiatif\ModelShared;
 use Illuminate\Support\Facades\Route;
 use Inisiatif\ModelShared\Http\Controllers\FetchJobOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCityOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchDonorDetailController;
+use Inisiatif\ModelShared\Http\Controllers\FetchDonorOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDegreeOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCountryOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchVillageOptionController;
@@ -38,5 +40,11 @@ final class Routes
     public static function maritalStatus(): void
     {
         Route::get('/options/marital-status', FetchMaritalStatusOptionController::class);
+    }
+
+    public static function donor(): void
+    {
+        Route::get('/options/donor', FetchDonorOptionController::class);
+        Route::get('/options/donor/{donorId}', FetchDonorDetailController::class);
     }
 }

@@ -59,5 +59,16 @@ return [
 
             'village' => Inisiatif\ModelShared\Models\Village::class,
         ],
-    ]
+    ],
+
+
+    'donor' => [
+        'connection' => env('MODEL_SHARE_DONOR_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'table' => env('MODEL_SHARE_DONOR_TABLE_NAME', 'donors'),
+
+        'migration' => env('MODEL_SHARE_DONOR_MIGRATION', false),
+
+        'model' => Inisiatif\ModelShared\Models\Donor::class,
+    ],
 ];

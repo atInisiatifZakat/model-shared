@@ -20,6 +20,6 @@ return new class() extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists(\config('shared.tables.degree'));
+        Schema::dropIfExists('degrees');
     }
 };

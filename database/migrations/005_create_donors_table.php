@@ -10,16 +10,18 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('jobs', static function (Blueprint $table): void {
-            $table->id();
+        Schema::create('donors', function (Blueprint $table): void {
+            $table->uuid('id')->primary();
+            $table->uuid('branch_id');
+            $table->uuid('employee_id');
+            $table->string('identification_number');
             $table->string('name');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('donors');
     }
 };
