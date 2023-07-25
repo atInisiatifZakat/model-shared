@@ -4,25 +4,19 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared\Repositories;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
+use Inisiatif\ModelShared\ModelShared;
 use Spatie\QueryBuilder\AllowedFilter;
-use Inisiatif\ModelShared\Models\Degree;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Inisiatif\Package\Common\Abstracts\AbstractRepository;
-use Inisiatif\Package\Contract\Common\Repository\RequestFilterAwareInterface;
 
-final class DegreeRepository extends AbstractRepository implements RequestFilterAwareInterface
+final class DegreeRepository
 {
-    protected $model = Degree::class;
-
-    public function filter($request): LengthAwarePaginator
+    public function fetchForOptions(Request $request): Collection
     {
-        return QueryBuilder::for($this->getModel()->newQuery(), $request)
-            ->allowedFilters([
-                AllowedFilter::partial('name'),
-                AllowedFilter::exact('active', 'is_active'),
-            ])
-            ->paginate((int) $request->query('limit'))
-            ->appends((array) $request->query());
+        return QueryBuilder::for(ModelShared::getDegreeModel()->newQuery(), $request)->allowedFilters([
+            AllowedFilter::partial('name'),
+            AllowedFilter::exact('active', 'is_active'),
+        ])->get();
     }
 }

@@ -4,39 +4,76 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared;
 
-use Illuminate\Routing\Router;
-use Inisiatif\ModelShared\Concern\JobMigration;
-use Inisiatif\ModelShared\Concern\DegreeMigration;
-use Inisiatif\ModelShared\Concern\RegionMigration;
-use Inisiatif\ModelShared\Concern\MaritalStatusMigration;
+use Illuminate\Database\Eloquent\Model;
+use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
+use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 
 final class ModelShared
 {
-    use JobMigration;
-
-    use DegreeMigration;
-
-    use RegionMigration;
-
-    use MaritalStatusMigration;
-
-    public static function jobRoute(Router $router): void
+    public static function getDegreeModel(): Model
     {
-        Routes::job($router);
+        return app(DegreeModelRegistrar::class)->getModel();
     }
 
-    public static function degreeRoute(Router $router): void
+    public static function getJobModel(): Model
     {
-        Routes::degree($router);
+        return app(JobModelRegistrar::class)->getModel();
     }
 
-    public static function regionRoute(Router $router): void
+    public static function getMaritalStatusModel(): Model
     {
-        Routes::region($router);
+        return app(MaritalStatusModelRegistrar::class)->getModel();
     }
 
-    public static function maritalStatusRoute(Router $router): void
+    public static function getCountryModel(): Model
     {
-        Routes::maritalStatus($router);
+        return self::getRegionModelRegistrar()->getCountryModel();
+    }
+
+    public static function getProvinceModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getProvinceModel();
+    }
+
+    public static function getCityModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getCityModel();
+    }
+
+    public static function getDistrictModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getDistrictModel();
+    }
+
+    public static function getVillageModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getVillageModel();
+    }
+
+    protected static function getRegionModelRegistrar(): RegionModelRegistrar
+    {
+        return app(RegionModelRegistrar::class);
+    }
+
+    public static function jobRoute(): void
+    {
+        Routes::job();
+    }
+
+    public static function degreeRoute(): void
+    {
+        Routes::degree();
+    }
+
+    public static function regionRoute(): void
+    {
+        Routes::region();
+    }
+
+    public static function maritalStatusRoute(): void
+    {
+        Routes::maritalStatus();
     }
 }

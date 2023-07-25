@@ -4,13 +4,30 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared\Models;
 
+use Illuminate\Database\Eloquent\Model;
+use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+
 final class Job extends Model
 {
-    protected $fillable = ['name', 'is_active'];
-
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    public function getConnectionName(): ?string
+    {
+        /** @var JobModelRegistrar $registrar */
+        $registrar = app(JobModelRegistrar::class);
+
+        return $registrar->getConnectionName();
+    }
+
+    public function getTable(): string
+    {
+        /** @var JobModelRegistrar $registrar */
+        $registrar = app(JobModelRegistrar::class);
+
+        return $registrar->getTableName();
+    }
 
     public function isActive(): bool
     {

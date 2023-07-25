@@ -1,28 +1,21 @@
 {
     "name": "inisiatif/model-shared",
-    "description": "Share model package using in Inisiatif Zakat Indonesia",
+    "description": "Share model at Inisiatif Zakat Indonesia",
     "license": "proprietary",
     "type": "library",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.packagist.com/inisiatif/"
-        },
-        {
-            "packagist.org": false
-        }
-    ],
     "require": {
-        "php": "~8.0.0|~8.1.0",
-        "illuminate/database": "^9.19",
-        "illuminate/routing": "^9.19",
-        "illuminate/support": "^9.19",
-        "inisiatif/common": "^1.1",
-        "inisiatif/contract": "^1.1",
-        "spatie/laravel-query-builder": "^5.0"
+        "php": "~8.1.0|~8.2.0",
+        "spatie/laravel-package-tools": "^1.15",
+        "spatie/laravel-query-builder": "^5.0",
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0"
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^9.0",
+        "psalm/plugin-laravel": "^2.8",
+        "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^5.13"
     },
     "autoload": {
         "psr-4": {
@@ -40,9 +33,21 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
+    "scripts": {
+        "analyse": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/pint",
+        "qa": [
+            "@format",
+            "@analyse",
+            "@test"
+        ]
+    },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.1-dev"
+        "laravel": {
+            "providers": [
+                "Inisiatif\\ModelShared\\ModelSharedServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
