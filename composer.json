@@ -1,24 +1,10 @@
 {
     "name": "inisiatif/model-shared",
-    "description": "Share model package using in Inisiatif Zakat Indonesia",
+    "description": "Share model at Inisiatif Zakat Indonesia",
     "license": "proprietary",
     "type": "library",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.packagist.com/inisiatif/"
-        },
-        {
-            "packagist.org": false
-        }
-    ],
     "require": {
         "php": "~8.0.0|~8.1.0",
-        "illuminate/database": "^9.19",
-        "illuminate/routing": "^9.19",
-        "illuminate/support": "^9.19",
-        "inisiatif/common": "^1.1",
-        "inisiatif/contract": "^1.1",
         "spatie/laravel-query-builder": "^5.0"
     },
     "require-dev": {
@@ -41,8 +27,10 @@
         "optimize-autoloader": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.1-dev"
+        "laravel": {
+            "providers": [
+                "Inisiatif\\ModelShared\\Providers\\ModelSharedServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
