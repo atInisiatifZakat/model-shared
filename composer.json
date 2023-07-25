@@ -4,11 +4,18 @@
     "license": "proprietary",
     "type": "library",
     "require": {
-        "php": "~8.0.0|~8.1.0",
-        "spatie/laravel-query-builder": "^5.0"
+        "php": "~8.1.0|~8.2.0",
+        "spatie/laravel-package-tools": "^1.15",
+        "spatie/laravel-query-builder": "^5.0",
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0"
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^9.0",
+        "psalm/plugin-laravel": "^2.8",
+        "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^5.13"
     },
     "autoload": {
         "psr-4": {
@@ -26,10 +33,20 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
+    "scripts": {
+        "analyse": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/pint",
+        "qa": [
+            "@format",
+            "@analyse",
+            "@test"
+        ]
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Inisiatif\\ModelShared\\Providers\\ModelSharedServiceProvider"
+                "Inisiatif\\ModelShared\\ModelSharedServiceProvider"
             ]
         }
     },

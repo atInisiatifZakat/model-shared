@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared\Tests;
 
+use Inisiatif\ModelShared\ModelSharedServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Inisiatif\ModelShared\Providers\ModelSharedServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {
