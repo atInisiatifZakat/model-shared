@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared;
 
-use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
-use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
-use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
-use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
+use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
@@ -32,10 +32,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.degree')
         );
 
-        $this->app->singleton(DegreeModelRegistrar::class, fn() => $registrar);
+        $this->app->singleton(DegreeModelRegistrar::class, fn () => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_degrees_tables.php');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_degrees_tables.php');
         }
     }
 
@@ -45,10 +45,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.job')
         );
 
-        $this->app->singleton(JobModelRegistrar::class, fn() => $registrar);
+        $this->app->singleton(JobModelRegistrar::class, fn () => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_jobs_tables.php');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_jobs_tables.php');
         }
     }
 
@@ -58,10 +58,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.marital_status')
         );
 
-        $this->app->singleton(MaritalStatusModelRegistrar::class, fn() => $registrar);
+        $this->app->singleton(MaritalStatusModelRegistrar::class, fn () => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_marital_statuses_table.php');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_marital_statuses_table.php');
         }
     }
 
@@ -71,15 +71,15 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.region')
         );
 
-        $this->app->singleton(RegionModelRegistrar::class, fn() => $registrar);
+        $this->app->singleton(RegionModelRegistrar::class, fn () => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__ . '/../database/migrations/create_countries_table.php',
-                __DIR__ . '/../database/migrations/create_provinces_table.php',
-                __DIR__ . '/../database/migrations/create_cities_table.php',
-                __DIR__ . '/../database/migrations/create_districts_table.php',
-                __DIR__ . '/../database/migrations/create_villages_table.php',
+                __DIR__.'/../database/migrations/create_countries_table.php',
+                __DIR__.'/../database/migrations/create_provinces_table.php',
+                __DIR__.'/../database/migrations/create_cities_table.php',
+                __DIR__.'/../database/migrations/create_districts_table.php',
+                __DIR__.'/../database/migrations/create_villages_table.php',
             ]);
         }
     }

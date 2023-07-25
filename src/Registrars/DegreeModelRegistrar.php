@@ -29,7 +29,7 @@ final class DegreeModelRegistrar
 
     public function runningModelMigration(): bool
     {
-        return Arr::get($this->config, 'migration');
+        return (bool) Arr::get($this->config, 'migration');
     }
 
     public function getTableName(): string

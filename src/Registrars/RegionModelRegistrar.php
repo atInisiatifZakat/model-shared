@@ -35,7 +35,7 @@ final class RegionModelRegistrar
 
     public function runningModelMigration(): bool
     {
-        return Arr::get($this->config, 'migration');
+        return (bool) Arr::get($this->config, 'migration');
     }
 
     public function getConnectionName(): string
