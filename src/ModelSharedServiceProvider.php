@@ -75,11 +75,11 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_countries_table.php',
-                __DIR__.'/../database/migrations/create_provinces_table.php',
-                __DIR__.'/../database/migrations/create_cities_table.php',
-                __DIR__.'/../database/migrations/create_districts_table.php',
-                __DIR__.'/../database/migrations/create_villages_table.php',
+                __DIR__.'/../database/migrations/000_create_countries_table.php',
+                __DIR__.'/../database/migrations/001_create_provinces_table.php',
+                __DIR__ . '/../database/migrations/002_create_cities_table.php',
+                __DIR__.'/../database/migrations/003_create_districts_table.php',
+                __DIR__ . '/../database/migrations/004_create_villages_table.php',
             ]);
         }
     }
