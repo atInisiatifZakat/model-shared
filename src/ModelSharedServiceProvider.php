@@ -20,6 +20,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerJobModelRegistrar();
         $this->registerMaritalStatusModelRegistrar();
         $this->registerRegionModelRegistrar();
+        $this->registerDonorModelRegistrar();
     }
 
     public function configurePackage(Package $package): void
