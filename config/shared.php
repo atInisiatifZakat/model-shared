@@ -69,6 +69,17 @@ return [
 
         'migration' => env('MODEL_SHARE_DONOR_MIGRATION', false),
 
-        'model' => Inisiatif\ModelShared\Models\Donor::class,
+        'model' => Inisiatif\ModelShared\Models\Donor::class,s
+    ],
+
+
+    'bank' => [
+        'connection' => env('MODEL_SHARE_BANK_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'table' => env('MODEL_SHARE_BANK_TABLE_NAME', 'banks'),
+
+        'migration' => env('MODEL_SHARE_BANK_MIGRATION', false),
+
+        'model' => Inisiatif\ModelShared\Models\Bank::class,
     ],
 ];

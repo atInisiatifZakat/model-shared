@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared;
 
 use Illuminate\Support\Facades\Route;
+use Inisiatif\ModelShared\Http\Controllers\FetchBankOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchJobOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCityOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDonorDetailController;
@@ -46,5 +47,10 @@ final class Routes
     {
         Route::get('/options/donor', FetchDonorOptionController::class);
         Route::get('/options/donor/{donorId}', FetchDonorDetailController::class);
+    }
+
+    public static function bank(): void
+    {
+        Route::get('/options/bank', FetchBankOptionController::class);
     }
 }

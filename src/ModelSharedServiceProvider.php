@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared;
 
+use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
@@ -21,6 +22,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerMaritalStatusModelRegistrar();
         $this->registerRegionModelRegistrar();
         $this->registerDonorModelRegistrar();
+        $this->registerBankModelRegistrar();
     }
 
     public function configurePackage(Package $package): void
@@ -97,6 +99,21 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
                 __DIR__.'/../database/migrations/005_create_donors_table.php',
+            ]);
+        }
+    }
+
+    protected function registerBankModelRegistrar(): void
+    {
+        $registrar = BankModelRegistrar::make(
+            \config('shared.bank')
+        );
+
+        $this->app->singleton(BankModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/006_create_banks_table.php',
             ]);
         }
     }

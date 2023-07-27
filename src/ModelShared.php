@@ -6,6 +6,7 @@ namespace Inisiatif\ModelShared;
 
 use Illuminate\Database\Eloquent\Model;
 use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
@@ -61,6 +62,11 @@ final class ModelShared
     public static function getDonorModel(): Model
     {
         return app(DonorModelRegistrar::class)->getModel();
+    }
+
+    public static function getBankModel(): Model
+    {
+        return app(BankModelRegistrar::class)->getModel();
     }
 
     public static function jobRoute(): void
