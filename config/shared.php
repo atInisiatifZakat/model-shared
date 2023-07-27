@@ -69,7 +69,7 @@ return [
 
         'migration' => env('MODEL_SHARE_DONOR_MIGRATION', false),
 
-        'model' => Inisiatif\ModelShared\Models\Donor::class,s
+        'model' => Inisiatif\ModelShared\Models\Donor::class,
     ],
 
 
