@@ -16,6 +16,7 @@ use Inisiatif\ModelShared\Http\Controllers\FetchVillageOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDistrictOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchProvinceOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchMaritalStatusOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchRegionSearchController;
 
 final class Routes
 {
@@ -31,6 +32,8 @@ final class Routes
 
     public static function region(): void
     {
+        Route::get('/options/region/search', FetchRegionSearchController::class);
+
         Route::get('/options/countries', FetchCountryOptionController::class);
         Route::get('/options/provinces', FetchProvinceOptionController::class);
         Route::get('/options/cities', FetchCityOptionController::class);
