@@ -72,6 +72,15 @@ return [
         'model' => Inisiatif\ModelShared\Models\Donor::class,
     ],
 
+    'donor_phone' => [
+        'connection' => env('MODEL_SHARE_DONOR_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'table' => env('MODEL_SHARE_DONOR_TABLE_NAME', 'donor_phones'),
+
+        'migration' => env('MODEL_SHARE_DONOR_MIGRATION', false),
+
+        'model' => Inisiatif\ModelShared\Models\DonorPhone::class,
+    ],
 
     'bank' => [
         'connection' => env('MODEL_SHARE_BANK_MODEL_CONNECTION', env('DB_CONNECTION')),
