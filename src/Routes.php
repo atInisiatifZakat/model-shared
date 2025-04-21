@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared;
 
 use Illuminate\Support\Facades\Route;
-use Inisiatif\ModelShared\Http\Controllers\FetchBankOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchJobOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchBankOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCityOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDonorDetailController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDonorOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDegreeOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchRegionSearchController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCountryOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchVillageOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDistrictOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchProvinceOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchMaritalStatusOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchRegionSearchController;
 
 final class Routes
 {
