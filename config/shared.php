@@ -75,7 +75,7 @@ return [
     'donor_phone' => [
         'connection' => env('MODEL_SHARE_DONOR_MODEL_CONNECTION', env('DB_CONNECTION')),
 
-        'table' => env('MODEL_SHARE_DONOR_TABLE_NAME', 'donor_phones'),
+        'table' => env('MODEL_SHARE_DONOR_PHONE_TABLE_NAME', 'donor_phones'),
 
         'migration' => env('MODEL_SHARE_DONOR_MIGRATION', false),
 
