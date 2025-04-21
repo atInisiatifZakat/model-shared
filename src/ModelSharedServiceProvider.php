@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared;
 
-use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
+use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
@@ -94,6 +95,11 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.donor')
         );
 
+        $phoneModelRegistrar = DonorPhoneModelRegistrar::make(
+            \config('shared.donor_phone')
+        );
+
+        $this->app->singleton(DonorPhoneModelRegistrar::class, fn () => $phoneModelRegistrar);
         $this->app->singleton(DonorModelRegistrar::class, fn () => $registrar);
 
         if ($registrar->runningModelMigration()) {

@@ -10,6 +10,7 @@ use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 
 final class ModelShared
@@ -62,6 +63,11 @@ final class ModelShared
     public static function getDonorModel(): Model
     {
         return app(DonorModelRegistrar::class)->getModel();
+    }
+
+    public static function getDonorPhoneModel(): Model
+    {
+        return app(DonorPhoneModelRegistrar::class)->getModel();
     }
 
     public static function getBankModel(): Model
