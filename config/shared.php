@@ -91,4 +91,18 @@ return [
 
         'model' => Inisiatif\ModelShared\Models\Bank::class,
     ],
+
+    'edonation' => [
+        'url' => env('EDONATION_URL'),
+
+        'key' => env('EDONATION_KEY'),
+
+        'secret' => env('EDONATION_SECRET'),
+
+        'settings' => [
+            'employee_id' => env('EDONATION_EMPLOYEE_ID'),
+
+            'branch_id' => env('EDONATION_BRANCH_ID'),
+        ],
+    ],
 ];
