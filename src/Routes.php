@@ -15,8 +15,16 @@ use Inisiatif\ModelShared\Http\Controllers\FetchRegionSearchController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCountryOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchVillageOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDistrictOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchDonationDetailOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchDonationOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchFundingCategoryController;
+use Inisiatif\ModelShared\Http\Controllers\FetchFundingTypeOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchProvinceOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchMaritalStatusOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchPartnerOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchProgramCategoryOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchProgramOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchSubProgramCategoryOptionController;
 
 final class Routes
 {
@@ -55,5 +63,29 @@ final class Routes
     public static function bank(): void
     {
         Route::get('/options/bank', FetchBankOptionController::class);
+    }
+
+    public static function donation(): void
+    {
+        Route::get('/options/donation', FetchDonationOptionController::class);
+        Route::get('/options/donation/detail', FetchDonationDetailOptionController::class);
+    }
+
+    public static function funding(): void
+    {
+        Route::get('/options/funding-type', FetchFundingTypeOptionController::class);
+        Route::get('/options/funding-category', FetchFundingCategoryController::class);
+    }
+
+    public static function program(): void
+    {
+        Route::get('/options/program', FetchProgramOptionController::class);
+        Route::get('/options/program-category', FetchProgramCategoryOptionController::class);
+        Route::get('/options/sub-program-category', FetchSubProgramCategoryOptionController::class);
+    }
+
+    public static function partner(): void
+    {
+        Route::get('/options/partner', FetchPartnerOptionController::class);
     }
 }

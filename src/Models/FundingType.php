@@ -2,14 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 
 final class FundingType extends Model
 {
-    protected $table = 'edonation.funding_types';
+    public function getConnectionName(): ?string
+    {
+        return $this->getModelRegistrar()->getConnectionName();
+    }
+
+    public function getTable(): string
+    {
+        return $this->getModelRegistrar()->getFundingTypeModelClass();
+    }
+
+    protected function getModelRegistrar(): FundingModelRegistrar
+    {
+        return app(FundingModelRegistrar::class);
+    }
 
     public function category(): BelongsTo
     {

@@ -2,17 +2,31 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 
 final class DonationDetail extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'edonation.donation_details';
+    public function getConnectionName(): ?string
+    {
+        return $this->getModelRegistrar()->getConnectionName();
+    }
+
+    public function getTable(): string
+    {
+        return $this->getModelRegistrar()->getDonationDetailTableName();
+    }
+
+    protected function getModelRegistrar(): DonationModelRegistrar
+    {
+        return app(DonationModelRegistrar::class);
+    }
 
     protected $casts = [
         'qurban_names' => 'array',

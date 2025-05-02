@@ -2,22 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 
 final class Partner extends Model
 {
-    protected $table = 'edonation.partners';
-
-    public function branch(): BelongsTo
+    public function getConnectionName(): ?string
     {
-        return $this->belongsTo(Branch::class)->withoutGlobalScopes();
+        /** @var PartnerModelRegistrar $registrar */
+        $registrar = app(PartnerModelRegistrar::class);
+
+        return $registrar->getConnectionName();
     }
 
-    public function employee(): BelongsTo
+    public function getTable(): string
     {
-        return $this->belongsTo(Employee::class)->withoutGlobalScopes();
+        /** @var PartnerModelRegistrar $registrar */
+        $registrar = app(PartnerModelRegistrar::class);
+
+        return $registrar->getTableName();
     }
 }
