@@ -65,12 +65,6 @@ final class Routes
         Route::get('/options/bank', FetchBankOptionController::class);
     }
 
-    public static function donation(): void
-    {
-        Route::get('/options/donation', FetchDonationOptionController::class);
-        Route::get('/options/donation/detail', FetchDonationDetailOptionController::class);
-    }
-
     public static function funding(): void
     {
         Route::get('/options/funding-type', FetchFundingTypeOptionController::class);

@@ -165,11 +165,6 @@ final class ModelShared
         Routes::bank();
     }
 
-    public static function donationRoute(): void
-    {
-        Routes::donation();
-    }
-
     public static function fundingRoute(): void
     {
         Routes::funding();

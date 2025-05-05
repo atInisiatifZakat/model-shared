@@ -6,10 +6,13 @@ namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 
 final class FundingType extends Model
 {
+    use SoftDeletes;
+
     public function getConnectionName(): ?string
     {
         return $this->getModelRegistrar()->getConnectionName();

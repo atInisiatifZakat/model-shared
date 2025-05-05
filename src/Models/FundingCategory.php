@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 
 final class FundingCategory extends Model
 {
+    use SoftDeletes;
+
     public function getConnectionName(): ?string
     {
         return $this->getModelRegistrar()->getConnectionName();
