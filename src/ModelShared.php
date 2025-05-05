@@ -5,13 +5,18 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared;
 
 use Illuminate\Database\Eloquent\Model;
+use Inisiatif\ModelShared\Models\Donation;
 use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
+use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
+use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 
 final class ModelShared
 {
@@ -59,6 +64,61 @@ final class ModelShared
     {
         return app(RegionModelRegistrar::class);
     }
+    // Get Donation Model
+    public static function getDonationModel(): Model
+    {
+        return self::getDonationModelRegistrar()->getDonationModel();
+    }
+
+    public static function getDonationDetailModel(): Model
+    {
+        return self::getDonationModelRegistrar()->getDonationDetailModel();
+    }
+
+    protected static function getDonationModelRegistrar(): DonationModelRegistrar
+    {
+        return app(DonationModelRegistrar::class);
+    }
+    // Get Funding Model
+    public static function getFundingCategoryModel(): Model
+    {
+        return self::getFundingModelRegistrar()->getFundingCategoryModel();
+    }
+
+    public static function getFundingTypeModel(): Model
+    {
+        return self::getFundingModelRegistrar()->getFundingTypeModel();
+    }
+
+    protected static function getFundingModelRegistrar(): FundingModelRegistrar
+    {
+        return app(FundingModelRegistrar::class);
+    }
+    // Get Program Model
+    public static function getProgramModel(): Model
+    {
+        return self::getProgramModelRegistrar()->getProgramModel();
+    }
+
+    public static function getProgramCategoryModel(): Model
+    {
+        return self::getProgramModelRegistrar()->getProgramCategoryModel();
+    }
+
+    public static function getSubProgramCategoryModel(): Model
+    {
+        return self::getProgramModelRegistrar()->getSubProgramCategoryModel();
+    }
+
+    protected static function getProgramModelRegistrar(): ProgramModelRegistrar
+    {
+        return app(ProgramModelRegistrar::class);
+    }
+
+    public static function getPartnerModel(): Model
+    {
+        return app(PartnerModelRegistrar::class)->getModel();
+    }
 
     public static function getDonorModel(): Model
     {
@@ -98,5 +158,25 @@ final class ModelShared
     public static function donorRoute(): void
     {
         Routes::donor();
+    }
+
+    public static function bankRoute(): void
+    {
+        Routes::bank();
+    }
+
+    public static function fundingRoute(): void
+    {
+        Routes::funding();
+    }
+
+    public static function programRoute(): void
+    {
+        Routes::program();
+    }
+
+    public static function partnerRoute(): void
+    {
+        Routes::partner();
     }
 }

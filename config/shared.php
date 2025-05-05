@@ -91,4 +91,72 @@ return [
 
         'model' => Inisiatif\ModelShared\Models\Bank::class,
     ],
+
+    'donation' => [
+        'connection' => env('MODEL_SHARE_DONATION_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_DONATION_MIGRATION', false),
+
+        'tables' => [
+            'donation' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donations'),
+
+            'donation_detail' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donation_details'),
+        ],
+
+        'models' => [
+            'donation' => Inisiatif\ModelShared\Models\Donation::class,
+
+            'donation_detail' => Inisiatif\ModelShared\Models\DonationDetail::class,
+        ],
+    ],
+
+    'funding' => [
+        'connection' => env('MODEL_SHARE_FUNDING_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_FUNDING_MIGRATION', false),
+
+        'tables' => [
+            'funding_category' => env('MODEL_SHARE_FUNDING_TABLE_NAME', 'funding_categories'),
+
+            'funding_type' => env('MODEL_SHARE_FUNDING_TABLE_NAME', 'funding_types'),
+        ],
+
+        'models' => [
+            'funding_category' => Inisiatif\ModelShared\Models\FundingCategory::class,
+
+            'funding_type' => Inisiatif\ModelShared\Models\FundingType::class,
+        ],
+    ],
+
+    'partner' => [
+        'connection' => env('MODEL_SHARE_PARTNER_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_PARTNER_MIGRATION', false),
+
+        'tables' => env('MODEL_SHARE_PARTNER_TABLE_NAME', 'partners'),
+
+        'models' => Inisiatif\ModelShared\Models\Partner::class,
+    ],
+
+    'program' => [
+        'connection' => env('MODEL_SHARE_PROGRAM_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_PROGRAM_MIGRATION', false),
+
+        'tables' => [
+            'program' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'programs'),
+
+            'program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'program_categories'),
+
+            'sub_program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'sub_program_categories'),
+        ],
+
+        'models' => [
+            'program' => Inisiatif\ModelShared\Models\Program::class,
+
+            'program_category' => Inisiatif\ModelShared\Models\ProgramCategory::class,
+
+            'sub_program_category' => Inisiatif\ModelShared\Models\SubProgramCategory::class,
+        ],
+    ],
 ];

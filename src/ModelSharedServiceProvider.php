@@ -10,9 +10,13 @@ use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
+use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
+use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
@@ -85,6 +89,70 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
                 __DIR__.'/../database/migrations/002_create_cities_table.php',
                 __DIR__.'/../database/migrations/003_create_districts_table.php',
                 __DIR__.'/../database/migrations/004_create_villages_table.php',
+            ]);
+        }
+    }
+
+    protected function registerDonationModelRegistrar(): void
+    {
+        $registrar = DonationModelRegistrar::make(
+            \config('shared.donation')
+        );
+
+        $this->app->singleton(DonationModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_donations_table.php',
+                __DIR__.'/../database/migrations/create_donations_table.php',
+            ]);
+        }
+    }
+
+    protected function registerFundingModelRegistrar(): void
+    {
+        $registrar = FundingModelRegistrar::make(
+            \config('shared.funding')
+        );
+
+        $this->app->singleton(FundingModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_funding_types.php',
+                __DIR__.'/../database/migrations/create_funding_categories_table.php',
+            ]);
+        }
+    }
+
+    protected function registerProgramModelRegistrar(): void
+    {
+        $registrar = ProgramModelRegistrar::make(
+            \config('shared.program')
+        );
+
+        $this->app->singleton(ProgramModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_programs_table.php',
+                __DIR__.'/../database/migrations/create_program_categories_table.php',
+                __DIR__.'/../database/migrations/create_sub_program_categories_table.php',
+            ]);
+        }
+    }
+
+    protected function registerPartnerModelRegistrar(): void
+    {
+        $registrar = PartnerModelRegistrar::make(
+            \config('shared.partner')
+        );
+
+        $this->app->singleton(PartnerModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_partners_table.php',
             ]);
         }
     }
