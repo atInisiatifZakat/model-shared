@@ -20,7 +20,7 @@ final class FundingType extends Model
 
     public function getTable(): string
     {
-        return $this->getModelRegistrar()->getFundingTypeModelClass();
+        return $this->getModelRegistrar()->getFundingTypeTableName();
     }
 
     protected function getModelRegistrar(): FundingModelRegistrar
