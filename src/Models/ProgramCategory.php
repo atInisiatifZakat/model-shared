@@ -16,7 +16,7 @@ final class ProgramCategory extends Model
 
     public function getTable(): string
     {
-        return $this->getModelRegistrar()->getProgramCategoryModelClass();
+        return $this->getModelRegistrar()->getProgramCategoryTableName();
     }
 
     protected function getModelRegistrar(): ProgramModelRegistrar

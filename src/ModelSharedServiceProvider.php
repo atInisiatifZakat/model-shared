@@ -26,6 +26,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerJobModelRegistrar();
         $this->registerMaritalStatusModelRegistrar();
         $this->registerRegionModelRegistrar();
+        $this->registerDonationModelRegistrar();
+        $this->registerFundingModelRegistrar();
+        $this->registerProgramModelRegistrar();
+        $this->registerPartnerModelRegistrar();
         $this->registerDonorModelRegistrar();
         $this->registerBankModelRegistrar();
     }
@@ -41,10 +45,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.degree')
         );
 
-        $this->app->singleton(DegreeModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(DegreeModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_degrees_tables.php');
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_degrees_tables.php');
         }
     }
 
@@ -54,10 +58,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.job')
         );
 
-        $this->app->singleton(JobModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(JobModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_jobs_tables.php');
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_jobs_tables.php');
         }
     }
 
@@ -67,10 +71,10 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.marital_status')
         );
 
-        $this->app->singleton(MaritalStatusModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(MaritalStatusModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations/create_marital_statuses_table.php');
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations/create_marital_statuses_table.php');
         }
     }
 
@@ -80,15 +84,15 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.region')
         );
 
-        $this->app->singleton(RegionModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(RegionModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/000_create_countries_table.php',
-                __DIR__.'/../database/migrations/001_create_provinces_table.php',
-                __DIR__.'/../database/migrations/002_create_cities_table.php',
-                __DIR__.'/../database/migrations/003_create_districts_table.php',
-                __DIR__.'/../database/migrations/004_create_villages_table.php',
+                __DIR__ . '/../database/migrations/000_create_countries_table.php',
+                __DIR__ . '/../database/migrations/001_create_provinces_table.php',
+                __DIR__ . '/../database/migrations/002_create_cities_table.php',
+                __DIR__ . '/../database/migrations/003_create_districts_table.php',
+                __DIR__ . '/../database/migrations/004_create_villages_table.php',
             ]);
         }
     }
@@ -99,12 +103,12 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.donation')
         );
 
-        $this->app->singleton(DonationModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(DonationModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_donations_table.php',
-                __DIR__.'/../database/migrations/create_donations_table.php',
+                __DIR__ . '/../database/migrations/create_donations_table.php',
+                __DIR__ . '/../database/migrations/create_donations_table.php',
             ]);
         }
     }
@@ -115,12 +119,12 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.funding')
         );
 
-        $this->app->singleton(FundingModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(FundingModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_funding_types.php',
-                __DIR__.'/../database/migrations/create_funding_categories_table.php',
+                __DIR__ . '/../database/migrations/create_funding_types.php',
+                __DIR__ . '/../database/migrations/create_funding_categories_table.php',
             ]);
         }
     }
@@ -131,13 +135,13 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.program')
         );
 
-        $this->app->singleton(ProgramModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(ProgramModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_programs_table.php',
-                __DIR__.'/../database/migrations/create_program_categories_table.php',
-                __DIR__.'/../database/migrations/create_sub_program_categories_table.php',
+                __DIR__ . '/../database/migrations/create_programs_table.php',
+                __DIR__ . '/../database/migrations/create_program_categories_table.php',
+                __DIR__ . '/../database/migrations/create_sub_program_categories_table.php',
             ]);
         }
     }
@@ -148,11 +152,11 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.partner')
         );
 
-        $this->app->singleton(PartnerModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(PartnerModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_partners_table.php',
+                __DIR__ . '/../database/migrations/create_partners_table.php',
             ]);
         }
     }
@@ -167,12 +171,12 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.donor_phone')
         );
 
-        $this->app->singleton(DonorPhoneModelRegistrar::class, fn () => $phoneModelRegistrar);
-        $this->app->singleton(DonorModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(DonorPhoneModelRegistrar::class, fn() => $phoneModelRegistrar);
+        $this->app->singleton(DonorModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/005_create_donors_table.php',
+                __DIR__ . '/../database/migrations/005_create_donors_table.php',
             ]);
         }
     }
@@ -183,11 +187,11 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
             \config('shared.bank')
         );
 
-        $this->app->singleton(BankModelRegistrar::class, fn () => $registrar);
+        $this->app->singleton(BankModelRegistrar::class, fn() => $registrar);
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/006_create_banks_table.php',
+                __DIR__ . '/../database/migrations/006_create_banks_table.php',
             ]);
         }
     }
