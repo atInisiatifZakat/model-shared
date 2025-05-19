@@ -15,9 +15,9 @@ final class PartnerModelRegistrar
     private function __construct(array $config)
     {
         Assert::keyExists($config, 'connection');
-        Assert::keyExists($config, 'table');
+        Assert::keyExists($config, 'tables');
         Assert::keyExists($config, 'migration');
-        Assert::keyExists($config, 'model');
+        Assert::keyExists($config, 'models');
 
         $this->config = $config;
     }
