@@ -36,7 +36,7 @@ return [
 
         'migration' => env('MODEL_SHARE_REGION_MIGRATION', false),
 
-        'tables' => [
+        'table' => [
             'country' => env('MODEL_SHARE_REGION_COUNTRY_TABLE_NAME', 'countries'),
 
             'province' => env('MODEL_SHARE_REGION_PROVINCE_TABLE_NAME', 'provinces'),
@@ -97,7 +97,7 @@ return [
 
         'migration' => env('MODEL_SHARE_DONATION_MIGRATION', false),
 
-        'tables' => [
+        'table' => [
             'donation' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donations'),
 
             'donation_detail' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donation_details'),
@@ -115,7 +115,7 @@ return [
 
         'migration' => env('MODEL_SHARE_FUNDING_MIGRATION', false),
 
-        'tables' => [
+        'table' => [
             'funding_category' => env('MODEL_SHARE_FUNDING_TABLE_NAME', 'funding_categories'),
 
             'funding_type' => env('MODEL_SHARE_FUNDING_TABLE_NAME', 'funding_types'),
@@ -133,7 +133,7 @@ return [
 
         'migration' => env('MODEL_SHARE_PARTNER_MIGRATION', false),
 
-        'tables' => env('MODEL_SHARE_PARTNER_TABLE_NAME', 'partners'),
+        'table' => env('MODEL_SHARE_PARTNER_TABLE_NAME', 'partners'),
 
         'models' => Inisiatif\ModelShared\Models\Partner::class,
     ],
@@ -143,7 +143,7 @@ return [
 
         'migration' => env('MODEL_SHARE_PROGRAM_MIGRATION', false),
 
-        'tables' => [
+        'table' => [
             'program' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'programs'),
 
             'program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'program_categories'),
