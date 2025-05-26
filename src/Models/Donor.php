@@ -86,6 +86,6 @@ final class Donor extends Model
 
     public function shouldSendNotify(): bool
     {
-        return $this->getKey() !== config('donation.default_donor_id');
+        return $this->getKey() !== config('donor.default_donor_id');
     }
 }

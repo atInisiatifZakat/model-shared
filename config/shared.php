@@ -71,7 +71,7 @@ return [
 
         'model' => Inisiatif\ModelShared\Models\Donor::class,
 
-        'donation.default_donor_id' => env('MODEL_SHARE_DEFAULT_DONOR_ID', null),
+        'default_donor_id' => env('MODEL_SHARE_DEFAULT_DONOR_ID', null),
     ],
 
     'donor_phone' => [
