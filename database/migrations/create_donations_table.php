@@ -25,7 +25,6 @@ return new class extends Migration
             $table->decimal('amount', 18, 2);
             $table->string('currency', 45);
             $table->decimal('currency_rate', 18, 2);
-            $table->decimal('currency_rate', 18, 2);
             $table->decimal('total_amount', 18, 2);
             $table->integer('edonation_id')->nullable();
             $table->softDeletes();
