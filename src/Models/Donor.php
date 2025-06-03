@@ -46,4 +46,46 @@ final class Donor extends Model
 
         return $this->belongsTo($registrar->getModelClassName(), 'donor_phone_id');
     }
+
+    public function getNotificationChannels(): ?array
+    {
+        $channels = $this->getAttribute('notification_channels');
+
+        if ($channels === null || count($channels) === 0) {
+            return ['EMAIL', 'SMS'];
+        }
+
+        if (\in_array(\mb_strtoupper('whatsapp'), $channels, true)) {
+            return $this->isSupportedWhatsApp() ? $channels : ['EMAIL', 'SMS'];
+        }
+
+        return $channels;
+    }
+
+    public function isSupportedChannels(string $channel): bool
+    {
+        $channels = $this->getNotificationChannels();
+
+        return $channels === null || \in_array(mb_strtoupper($channel), $channels, true);
+    }
+
+    public function sendSms(): bool
+    {
+        return $this->shouldSendNotify() && $this->isSupportedChannels('SMS');
+    }
+
+    public function sendEmail(): bool
+    {
+        return $this->shouldSendNotify() && $this->isSupportedChannels('EMAIL') && $this->haveValidEmail();
+    }
+
+    public function sendWhatsApp(): bool
+    {
+        return $this->shouldSendNotify() && $this->isSupportedChannels('WHATSAPP');
+    }
+
+    public function shouldSendNotify(): bool
+    {
+        return $this->getKey() !== config('donor.default_donor_id');
+    }
 }
