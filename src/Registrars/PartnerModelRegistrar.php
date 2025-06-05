@@ -34,12 +34,12 @@ final class PartnerModelRegistrar
 
     public function getTableName(): string
     {
-        return Arr::get($this->config, 'table');
+        return Arr::get($this->config, 'tables');
     }
 
     public function getModelClassName(): string
     {
-        return Arr::get($this->config, 'model');
+        return Arr::get($this->config, 'models');
     }
 
     public function getModel(): Model
