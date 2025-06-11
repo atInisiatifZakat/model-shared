@@ -11,12 +11,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sub_program_categories', function (Blueprint $table): void {
-            $table->uuid('id');
+            $table->id();
             $table->string('name');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->primary('id');
         });
     }
 
