@@ -6,11 +6,13 @@ namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 
 final class Partner extends Model
 {
     use SoftDeletes;
+    use HasUuids;
 
     public function getConnectionName(): ?string
     {
