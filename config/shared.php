@@ -161,4 +161,34 @@ return [
             'sub_program_category' => Inisiatif\ModelShared\Models\SubProgramCategory::class,
         ],
     ],
+    
+    'funding_source' => [
+        'connection' => env('MODEL_SHARE_FUNDING_SOURCE_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_FUNDING_SOURCE_MIGRATION', false),
+
+        'tables' => env('MODEL_SHARE_FUNDING_SOURCE_TABLE_NAME', 'funding_sources'),
+
+        'models' => Inisiatif\ModelShared\Models\FundingSource::class,
+    ],
+
+    'beneficiary_type' => [
+        'connection' => env('MODEL_SHARE_BENEFICIARY_TYPE_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_BENEFICIARY_TYPE_MIGRATION', false),
+
+        'tables' => env('MODEL_SHARE_BENEFICIARY_TYPE_TABLE_NAME', 'beneficiary_types'),
+
+        'models' => Inisiatif\ModelShared\Models\BeneficiaryType::class,
+    ],
+    
+    'account' => [
+        'connection' => env('MODEL_SHARE_ACCOUNT_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_ACCOUNT_MIGRATION', false),
+
+        'tables' => env('MODEL_SHARE_ACCOUNT_TABLE_NAME', 'accounts'),
+
+        'models' => Inisiatif\ModelShared\Models\Account::class,
+    ],
 ];
