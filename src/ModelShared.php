@@ -17,7 +17,10 @@ use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
+use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
+use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
+
 
 final class ModelShared
 {
@@ -139,6 +142,16 @@ final class ModelShared
     public static function getFundingSourceModel(): Model
     {
         return app(FundingSourceModelRegistrar::class)->getModel();
+    }
+
+    public static function getBeneficiaryTypeModel(): Model
+    {
+        return app(BeneficiaryTypeModelRegistrar::class)->getModel();
+    }
+    
+    public static function getAccountModel(): Model
+    {
+        return app(AccountModelRegistrar::class)->getModel();
     }
 
     public static function jobRoute(): void
