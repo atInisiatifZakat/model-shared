@@ -17,6 +17,9 @@ use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
+use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
+use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
+use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
@@ -32,6 +35,9 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerPartnerModelRegistrar();
         $this->registerDonorModelRegistrar();
         $this->registerBankModelRegistrar();
+        $this->registerFundingSourceModelRegistrar();
+        $this->registerBeneficiaryTypeModelRegistrar();
+        $this->registerAccountModelRegistrar();
     }
 
     public function configurePackage(Package $package): void
@@ -192,6 +198,51 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
                 __DIR__ . '/../database/migrations/006_create_banks_table.php',
+            ]);
+        }
+    }
+
+    protected function registerFundingSourceModelRegistrar(): void
+    {
+        $registrar = FundingSourceModelRegistrar::make(
+            \config('shared.funding_source')
+        );
+
+        $this->app->singleton(FundingSourceModelRegistrar::class, fn() => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__ . '/../database/migrations/create_funding_source_table.php',
+            ]);
+        }
+    }
+
+    protected function registerBeneficiaryTypeModelRegistrar(): void
+    {
+        $registrar = BeneficiaryTypeModelRegistrar::make(
+            \config('shared.beneficiary_type')
+        );
+
+        $this->app->singleton(BeneficiaryTypeModelRegistrar::class, fn() => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__ . '/../database/migrations/create_beneficiary_type_table.php',
+            ]);
+        }
+    }
+
+    protected function registerAccountModelRegistrar(): void
+    {
+        $registrar = AccountModelRegistrar::make(
+            \config('shared.account')
+        );
+
+        $this->app->singleton(AccountModelRegistrar::class, fn() => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__ . '/../database/migrations/create_account_table.php',
             ]);
         }
     }
