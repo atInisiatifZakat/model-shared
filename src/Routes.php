@@ -13,17 +13,15 @@ use Inisiatif\ModelShared\Http\Controllers\FetchDonorOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDegreeOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchRegionSearchController;
 use Inisiatif\ModelShared\Http\Controllers\FetchCountryOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchPartnerOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchProgramOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchVillageOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchDistrictOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchDonationDetailOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchDonationOptionController;
+use Inisiatif\ModelShared\Http\Controllers\FetchProvinceOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchFundingCategoryController;
 use Inisiatif\ModelShared\Http\Controllers\FetchFundingTypeOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchProvinceOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchMaritalStatusOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchPartnerOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchProgramCategoryOptionController;
-use Inisiatif\ModelShared\Http\Controllers\FetchProgramOptionController;
 use Inisiatif\ModelShared\Http\Controllers\FetchSubProgramCategoryOptionController;
 
 final class Routes

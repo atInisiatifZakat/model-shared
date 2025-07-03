@@ -10,17 +10,16 @@ use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
-use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
-use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
+use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
-use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
-use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
+use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
-
 
 final class ModelShared
 {
@@ -68,6 +67,7 @@ final class ModelShared
     {
         return app(RegionModelRegistrar::class);
     }
+
     // Get Donation Model
     public static function getDonationModel(): Model
     {
@@ -83,6 +83,7 @@ final class ModelShared
     {
         return app(DonationModelRegistrar::class);
     }
+
     // Get Funding Model
     public static function getFundingCategoryModel(): Model
     {
@@ -98,6 +99,7 @@ final class ModelShared
     {
         return app(FundingModelRegistrar::class);
     }
+
     // Get Program Model
     public static function getProgramModel(): Model
     {
@@ -148,7 +150,7 @@ final class ModelShared
     {
         return app(BeneficiaryTypeModelRegistrar::class)->getModel();
     }
-    
+
     public static function getAccountModel(): Model
     {
         return app(AccountModelRegistrar::class)->getModel();

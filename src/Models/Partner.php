@@ -11,8 +11,8 @@ use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 
 final class Partner extends Model
 {
-    use SoftDeletes;
     use HasUuids;
+    use SoftDeletes;
 
     public function getConnectionName(): ?string
     {
