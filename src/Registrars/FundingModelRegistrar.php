@@ -7,8 +7,8 @@ namespace Inisiatif\ModelShared\Registrars;
 use Illuminate\Support\Arr;
 use Webmozart\Assert\Assert;
 use Illuminate\Database\Eloquent\Model;
-use Inisiatif\ModelShared\Models\FundingCategory;
 use Inisiatif\ModelShared\Models\FundingType;
+use Inisiatif\ModelShared\Models\FundingCategory;
 
 final class FundingModelRegistrar
 {

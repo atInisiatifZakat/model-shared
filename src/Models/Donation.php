@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inisiatif\ModelShared\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 
 final class Donation extends Model
 {
-    use SoftDeletes;
     use HasUuids;
+    use SoftDeletes;
 
     public function getConnectionName(): ?string
     {

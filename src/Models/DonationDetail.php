@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inisiatif\ModelShared\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 
 final class DonationDetail extends Model
@@ -34,7 +34,7 @@ final class DonationDetail extends Model
 
     public function funding(): BelongsTo
     {
-        return $this->belongsTo(FundingType::class,'funding_type_id')->withoutGlobalScopes();
+        return $this->belongsTo(FundingType::class, 'funding_type_id')->withoutGlobalScopes();
     }
 
     public function toOrderItemAttributes()
