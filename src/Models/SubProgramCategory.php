@@ -16,7 +16,7 @@ final class SubProgramCategory extends Model
 
     public function getTable(): string
     {
-        return $this->getModelRegistrar()->getProgramCategoryTableName();
+        return $this->getModelRegistrar()->getSubProgramCategoryTableName();
     }
 
     protected function getModelRegistrar(): ProgramModelRegistrar
