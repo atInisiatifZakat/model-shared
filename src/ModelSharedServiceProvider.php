@@ -212,7 +212,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_funding_source_table.php',
+                __DIR__.'/../database/migrations/create_funding_sources_table.php',
             ]);
         }
     }
@@ -242,7 +242,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
-                __DIR__.'/../database/migrations/create_account_table.php',
+                __DIR__.'/../database/migrations/create_accounts_table.php',
             ]);
         }
     }
