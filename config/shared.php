@@ -102,7 +102,7 @@ return [
         'tables' => [
             'donation' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donations'),
 
-            'donation_detail' => env('MODEL_SHARE_DONATION_TABLE_NAME', 'donation_details'),
+            'donation_detail' => env('MODEL_SHARE_DONATION_DETAIL_TABLE_NAME', 'donation_details'),
         ],
 
         'models' => [
