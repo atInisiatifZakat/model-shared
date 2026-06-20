@@ -20,6 +20,7 @@ use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
@@ -38,6 +39,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerFundingSourceModelRegistrar();
         $this->registerBeneficiaryTypeModelRegistrar();
         $this->registerAccountModelRegistrar();
+        $this->registerPillarModelRegistrar();
     }
 
     public function configurePackage(Package $package): void
@@ -243,6 +245,21 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
                 __DIR__.'/../database/migrations/create_accounts_table.php',
+            ]);
+        }
+    }
+
+    protected function registerPillarModelRegistrar(): void
+    {
+        $registrar = PillarModelRegistrar::make(
+            \config('shared.pillar')
+        );
+
+        $this->app->singleton(PillarModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_pillars_table.php',
             ]);
         }
     }

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
 
 final class Donor extends Model
 {
@@ -45,6 +46,14 @@ final class Donor extends Model
         $registrar = app(DonorPhoneModelRegistrar::class);
 
         return $this->belongsTo($registrar->getModelClassName(), 'donor_phone_id');
+    }
+
+    public function pillar(): BelongsTo
+    {
+        /** @var PillarModelRegistrar $registrar */
+        $registrar = app(PillarModelRegistrar::class);
+
+        return $this->belongsTo($registrar->getModelClassName(), 'pillar_id');
     }
 
     public function getNotificationChannels(): ?array
