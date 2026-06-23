@@ -20,6 +20,7 @@ use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
 
 final class ModelShared
 {
@@ -154,6 +155,11 @@ final class ModelShared
     public static function getAccountModel(): Model
     {
         return app(AccountModelRegistrar::class)->getModel();
+    }
+
+    public static function getPillarModel(): Model
+    {
+        return app(PillarModelRegistrar::class)->getModel();
     }
 
     public static function jobRoute(): void

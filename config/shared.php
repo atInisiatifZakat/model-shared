@@ -191,4 +191,14 @@ return [
 
         'models' => Inisiatif\ModelShared\Models\Account::class,
     ],
+
+    'pillar' => [
+        'connection' => env('MODEL_SHARE_PILLAR_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'table' => env('MODEL_SHARE_PILLAR_TABLE_NAME', 'pillars'),
+
+        'migration' => env('MODEL_SHARE_PILLAR_MIGRATION', false),
+
+        'model' => Inisiatif\ModelShared\Models\Pillar::class,
+    ],
 ];

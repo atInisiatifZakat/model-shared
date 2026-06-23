@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('identification_number');
             $table->string('name');
             $table->string('email')->nullable();
+            $table->string('pillar_id')->nullable();
             $table->unsignedBigInteger('donor_phone_id')->nullable();
             $table->timestamps();
         });
