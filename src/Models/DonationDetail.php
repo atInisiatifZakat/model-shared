@@ -37,6 +37,11 @@ final class DonationDetail extends Model
         return $this->belongsTo(FundingType::class, 'funding_type_id')->withoutGlobalScopes();
     }
 
+    public function program(): BelongsTo
+    {
+        return $this->belongsTo(Program::class, 'program_id')->withoutGlobalScopes();
+    }
+
     public function toOrderItemAttributes()
     {
         return [
