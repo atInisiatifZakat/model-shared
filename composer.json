@@ -14,7 +14,6 @@
         "orchestra/testbench": "^8.0",
         "phpunit/phpunit": "^9.0",
         "psalm/plugin-laravel": "^2.8",
-        "roave/security-advisories": "dev-latest",
         "vimeo/psalm": "^5.13"
     },
     "autoload": {
