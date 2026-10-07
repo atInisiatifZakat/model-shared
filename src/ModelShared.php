@@ -10,6 +10,7 @@ use Inisiatif\ModelShared\Registrars\JobModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BankModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DegreeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
 use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
@@ -17,10 +18,10 @@ use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PartnerTypeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
-use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
 
 final class ModelShared
 {
@@ -52,6 +53,11 @@ final class ModelShared
     public static function getCityModel(): Model
     {
         return self::getRegionModelRegistrar()->getCityModel();
+    }
+
+    public static function getRegencyModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getRegencyModel();
     }
 
     public static function getDistrictModel(): Model
@@ -125,6 +131,11 @@ final class ModelShared
     public static function getPartnerModel(): Model
     {
         return app(PartnerModelRegistrar::class)->getModel();
+    }
+
+    public static function getPartnerTypeModel(): Model
+    {
+        return app(PartnerTypeModelRegistrar::class)->getModel();
     }
 
     public static function getDonorModel(): Model

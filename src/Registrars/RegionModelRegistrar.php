@@ -9,6 +9,7 @@ use Webmozart\Assert\Assert;
 use Inisiatif\ModelShared\Models\City;
 use Illuminate\Database\Eloquent\Model;
 use Inisiatif\ModelShared\Models\Country;
+use Inisiatif\ModelShared\Models\Regency;
 use Inisiatif\ModelShared\Models\Village;
 use Inisiatif\ModelShared\Models\District;
 use Inisiatif\ModelShared\Models\Province;
@@ -58,6 +59,11 @@ final class RegionModelRegistrar
         return Arr::get($this->config, 'tables.city', 'cities');
     }
 
+    public function getRegencyTableName(): string
+    {
+        return Arr::get($this->config, 'tables.regency', 'regencies');
+    }
+
     public function getDistrictTableName(): string
     {
         return Arr::get($this->config, 'tables.district', 'districts');
@@ -98,6 +104,14 @@ final class RegionModelRegistrar
     /**
      * @return class-string<Model>
      */
+    public function getRegencyModelClass(): string
+    {
+        return Arr::get($this->config, 'models.regency', Regency::class);
+    }
+
+    /**
+     * @return class-string<Model>
+     */
     public function getDistrictModelClass(): string
     {
         return Arr::get($this->config, 'models.district', District::class);
@@ -129,6 +143,13 @@ final class RegionModelRegistrar
     {
         return app(
             $this->getCityModelClass()
+        );
+    }
+
+    public function getRegencyModel(): Model
+    {
+        return app(
+            $this->getRegencyModelClass()
         );
     }
 

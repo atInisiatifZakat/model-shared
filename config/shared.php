@@ -43,6 +43,11 @@ return [
 
             'city' => env('MODEL_SHARE_REGION_CITY_TABLE_NAME', 'cities'),
 
+            /*
+            | Wilayah donation (kabupaten/kota). Berbeda dari district region.
+            */
+            'regency' => env('MODEL_SHARE_REGION_REGENCY_TABLE_NAME', 'regencies'),
+
             'district' => env('MODEL_SHARE_REGION_DISTRICT_TABLE_NAME', 'districts'),
 
             'village' => env('MODEL_SHARE_REGION_VILLAGE_TABLE_NAME', 'villages'),
@@ -54,6 +59,8 @@ return [
             'province' => Inisiatif\ModelShared\Models\Province::class,
 
             'city' => Inisiatif\ModelShared\Models\City::class,
+
+            'regency' => Inisiatif\ModelShared\Models\Regency::class,
 
             'district' => Inisiatif\ModelShared\Models\District::class,
 
@@ -140,6 +147,16 @@ return [
         'models' => Inisiatif\ModelShared\Models\Partner::class,
     ],
 
+    'partner_type' => [
+        'connection' => env('MODEL_SHARE_PARTNER_TYPE_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_PARTNER_TYPE_MIGRATION', false),
+
+        'tables' => env('MODEL_SHARE_PARTNER_TYPE_TABLE_NAME', 'partner_types'),
+
+        'models' => Inisiatif\ModelShared\Models\PartnerType::class,
+    ],
+
     'program' => [
         'connection' => env('MODEL_SHARE_PROGRAM_MODEL_CONNECTION', env('DB_CONNECTION')),
 
@@ -151,6 +168,11 @@ return [
             'program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'program_categories'),
 
             'sub_program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'sub_program_categories'),
+
+            /*
+            | Pivot program dan jenis dana di donation.
+            */
+            'program_funding_type' => env('MODEL_SHARE_PROGRAM_FUNDING_TYPE_TABLE_NAME', 'program_funding_type'),
         ],
 
         'models' => [

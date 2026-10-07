@@ -7,6 +7,7 @@ namespace Inisiatif\ModelShared\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 
 final class Program extends Model
@@ -31,5 +32,13 @@ final class Program extends Model
     public function funding(): BelongsTo
     {
         return $this->belongsTo(FundingType::class, 'funding_type_id')->withoutGlobalScopes();
+    }
+
+    public function fundingTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            FundingType::class,
+            $this->getModelRegistrar()->getProgramFundingTypeTableName(),
+        )->withoutGlobalScopes();
     }
 }
