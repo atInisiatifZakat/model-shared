@@ -135,9 +135,42 @@ return [
 
         'migration' => env('MODEL_SHARE_PARTNER_MIGRATION', false),
 
-        'tables' => env('MODEL_SHARE_PARTNER_TABLE_NAME', 'partners'),
+        'tables' => [
+            'partner' => env('MODEL_SHARE_PARTNER_TABLE_NAME', 'partners'),
 
-        'models' => Inisiatif\ModelShared\Models\Partner::class,
+            'partner_type' => env('MODEL_SHARE_PARTNER_TYPE_TABLE_NAME', 'partner_types'),
+        ],
+
+        'models' => [
+            'partner' => Inisiatif\ModelShared\Models\Partner::class,
+
+            'partner_type' => Inisiatif\ModelShared\Models\PartnerType::class,
+        ],
+    ],
+
+    /*
+    | Wilayah donation. Bukan tabel region model-shared.
+    */
+    'donation_region' => [
+        'connection' => env('MODEL_SHARE_DONATION_REGION_MODEL_CONNECTION', env('DB_CONNECTION')),
+
+        'migration' => env('MODEL_SHARE_DONATION_REGION_MIGRATION', false),
+
+        'tables' => [
+            'province' => env('MODEL_SHARE_DONATION_PROVINCE_TABLE_NAME', 'donation_provinces'),
+
+            'city' => env('MODEL_SHARE_DONATION_CITY_TABLE_NAME', 'donation_cities'),
+
+            'regency' => env('MODEL_SHARE_DONATION_REGENCY_TABLE_NAME', 'donation_regencies'),
+        ],
+
+        'models' => [
+            'province' => Inisiatif\ModelShared\Models\DonationProvince::class,
+
+            'city' => Inisiatif\ModelShared\Models\DonationCity::class,
+
+            'regency' => Inisiatif\ModelShared\Models\DonationRegency::class,
+        ],
     ],
 
     'program' => [
@@ -151,6 +184,11 @@ return [
             'program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'program_categories'),
 
             'sub_program_category' => env('MODEL_SHARE_PROGRAM_TABLE_NAME', 'sub_program_categories'),
+
+            /*
+            | Pivot program dan jenis dana di donation.
+            */
+            'program_funding_type' => env('MODEL_SHARE_PROGRAM_FUNDING_TYPE_TABLE_NAME', 'program_funding_type'),
         ],
 
         'models' => [

@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('province_id', 100)->nullable();
             $table->string('postal_code', 10)->nullable();
             $table->string('phone_number', 25)->nullable();
-            $table->string('agreement_number');
-            $table->dateTime('agreement_date');
-            $table->dateTime('agreement_expiry_date');
+            $table->string('agreement_number')->nullable();
+            $table->dateTime('agreement_date')->nullable();
+            $table->dateTime('agreement_expiry_date')->nullable();
             $table->boolean('status');
+            $table->unsignedBigInteger('partner_type_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

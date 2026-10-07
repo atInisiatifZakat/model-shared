@@ -20,6 +20,7 @@ use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonationRegionModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
@@ -33,6 +34,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerFundingModelRegistrar();
         $this->registerProgramModelRegistrar();
         $this->registerPartnerModelRegistrar();
+        $this->registerDonationRegionModelRegistrar();
         $this->registerDonorModelRegistrar();
         $this->registerBankModelRegistrar();
         $this->registerFundingSourceModelRegistrar();
@@ -148,6 +150,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
                 __DIR__.'/../database/migrations/create_programs_table.php',
                 __DIR__.'/../database/migrations/create_program_categories_table.php',
                 __DIR__.'/../database/migrations/create_sub_program_categories_table.php',
+                __DIR__.'/../database/migrations/create_program_funding_type_table.php',
             ]);
         }
     }
@@ -162,7 +165,25 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
 
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_partner_types_table.php',
                 __DIR__.'/../database/migrations/create_partners_table.php',
+            ]);
+        }
+    }
+
+    protected function registerDonationRegionModelRegistrar(): void
+    {
+        $registrar = DonationRegionModelRegistrar::make(
+            \config('shared.donation_region')
+        );
+
+        $this->app->singleton(DonationRegionModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_donation_provinces_table.php',
+                __DIR__.'/../database/migrations/create_donation_cities_table.php',
+                __DIR__.'/../database/migrations/create_donation_regencies_table.php',
             ]);
         }
     }

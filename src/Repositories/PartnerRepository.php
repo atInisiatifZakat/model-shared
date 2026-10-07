@@ -19,6 +19,7 @@ final class PartnerRepository
             AllowedFilter::exact('regency_id'),
             AllowedFilter::exact('city_id'),
             AllowedFilter::exact('province_id'),
+            AllowedFilter::exact('partner_type_id'),
             AllowedFilter::exact('status'),
         ])->cursorPaginate($request->integer('limit'))->withQueryString();
     }

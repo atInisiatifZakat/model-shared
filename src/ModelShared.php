@@ -20,6 +20,7 @@ use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonationRegionModelRegistrar;
 
 final class ModelShared
 {
@@ -123,7 +124,27 @@ final class ModelShared
 
     public static function getPartnerModel(): Model
     {
-        return app(PartnerModelRegistrar::class)->getModel();
+        return app(PartnerModelRegistrar::class)->getPartnerModel();
+    }
+
+    public static function getPartnerTypeModel(): Model
+    {
+        return app(PartnerModelRegistrar::class)->getPartnerTypeModel();
+    }
+
+    public static function getDonationProvinceModel(): Model
+    {
+        return app(DonationRegionModelRegistrar::class)->getProvinceModel();
+    }
+
+    public static function getDonationCityModel(): Model
+    {
+        return app(DonationRegionModelRegistrar::class)->getCityModel();
+    }
+
+    public static function getRegencyModel(): Model
+    {
+        return app(DonationRegionModelRegistrar::class)->getRegencyModel();
     }
 
     public static function getDonorModel(): Model
