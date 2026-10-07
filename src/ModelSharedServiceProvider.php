@@ -20,11 +20,8 @@ use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingSourceModelRegistrar;
 use Inisiatif\ModelShared\Registrars\MaritalStatusModelRegistrar;
 use Inisiatif\ModelShared\Registrars\BeneficiaryTypeModelRegistrar;
-<<<<<<< HEAD
-use Inisiatif\ModelShared\Registrars\DonationRegionModelRegistrar;
-=======
 use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
->>>>>>> b7fe235dcc695f926697c2516a353bb8ee9b3b5a
+use Inisiatif\ModelShared\Registrars\DonationRegionModelRegistrar;
 
 final class ModelSharedServiceProvider extends PackageServiceProvider
 {
