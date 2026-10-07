@@ -24,6 +24,7 @@ return new class extends Migration
             $table->dateTime('agreement_date');
             $table->dateTime('agreement_expiry_date');
             $table->boolean('status');
+            $table->foreignId('partner_type_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

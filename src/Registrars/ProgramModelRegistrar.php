@@ -86,6 +86,11 @@ final class ProgramModelRegistrar
         return Arr::get($this->config, 'tables.sub_program_category', 'sub_program_categories');
     }
 
+    public function getProgramFundingTypeTableName(): string
+    {
+        return Arr::get($this->config, 'tables.program_funding_type', 'program_funding_type');
+    }
+
     /**
      * @return class-string<Model>
      */

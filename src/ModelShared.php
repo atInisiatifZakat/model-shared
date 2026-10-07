@@ -14,6 +14,7 @@ use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PartnerTypeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
@@ -52,6 +53,11 @@ final class ModelShared
     public static function getCityModel(): Model
     {
         return self::getRegionModelRegistrar()->getCityModel();
+    }
+
+    public static function getRegencyModel(): Model
+    {
+        return self::getRegionModelRegistrar()->getRegencyModel();
     }
 
     public static function getDistrictModel(): Model
@@ -125,6 +131,11 @@ final class ModelShared
     public static function getPartnerModel(): Model
     {
         return app(PartnerModelRegistrar::class)->getModel();
+    }
+
+    public static function getPartnerTypeModel(): Model
+    {
+        return app(PartnerTypeModelRegistrar::class)->getModel();
     }
 
     public static function getDonorModel(): Model

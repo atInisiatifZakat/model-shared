@@ -14,6 +14,7 @@ use Inisiatif\ModelShared\Registrars\RegionModelRegistrar;
 use Inisiatif\ModelShared\Registrars\AccountModelRegistrar;
 use Inisiatif\ModelShared\Registrars\FundingModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PartnerModelRegistrar;
+use Inisiatif\ModelShared\Registrars\PartnerTypeModelRegistrar;
 use Inisiatif\ModelShared\Registrars\ProgramModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonationModelRegistrar;
 use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
@@ -34,6 +35,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         $this->registerFundingModelRegistrar();
         $this->registerProgramModelRegistrar();
         $this->registerPartnerModelRegistrar();
+        $this->registerPartnerTypeModelRegistrar();
         $this->registerDonorModelRegistrar();
         $this->registerBankModelRegistrar();
         $this->registerFundingSourceModelRegistrar();
@@ -99,6 +101,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
                 __DIR__.'/../database/migrations/000_create_countries_table.php',
                 __DIR__.'/../database/migrations/001_create_provinces_table.php',
                 __DIR__.'/../database/migrations/002_create_cities_table.php',
+                __DIR__.'/../database/migrations/create_regencies_table.php',
                 __DIR__.'/../database/migrations/003_create_districts_table.php',
                 __DIR__.'/../database/migrations/004_create_villages_table.php',
             ]);
@@ -150,6 +153,7 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
                 __DIR__.'/../database/migrations/create_programs_table.php',
                 __DIR__.'/../database/migrations/create_program_categories_table.php',
                 __DIR__.'/../database/migrations/create_sub_program_categories_table.php',
+                __DIR__.'/../database/migrations/create_program_funding_type_table.php',
             ]);
         }
     }
@@ -165,6 +169,21 @@ final class ModelSharedServiceProvider extends PackageServiceProvider
         if ($registrar->runningModelMigration()) {
             $this->loadMigrationsFrom([
                 __DIR__.'/../database/migrations/create_partners_table.php',
+            ]);
+        }
+    }
+
+    protected function registerPartnerTypeModelRegistrar(): void
+    {
+        $registrar = PartnerTypeModelRegistrar::make(
+            \config('shared.partner_type')
+        );
+
+        $this->app->singleton(PartnerTypeModelRegistrar::class, fn () => $registrar);
+
+        if ($registrar->runningModelMigration()) {
+            $this->loadMigrationsFrom([
+                __DIR__.'/../database/migrations/create_partner_types_table.php',
             ]);
         }
     }
