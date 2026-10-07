@@ -9,10 +9,10 @@ use Webmozart\Assert\Assert;
 use Inisiatif\ModelShared\Models\City;
 use Illuminate\Database\Eloquent\Model;
 use Inisiatif\ModelShared\Models\Country;
+use Inisiatif\ModelShared\Models\Regency;
 use Inisiatif\ModelShared\Models\Village;
 use Inisiatif\ModelShared\Models\District;
 use Inisiatif\ModelShared\Models\Province;
-use Inisiatif\ModelShared\Models\Regency;
 
 final class RegionModelRegistrar
 {

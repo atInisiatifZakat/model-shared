@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Inisiatif\ModelShared\Registrars\DonorModelRegistrar;
-use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 use Inisiatif\ModelShared\Registrars\PillarModelRegistrar;
+use Inisiatif\ModelShared\Registrars\DonorPhoneModelRegistrar;
 
 final class Donor extends Model
 {
